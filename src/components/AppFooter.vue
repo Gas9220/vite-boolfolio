@@ -10,8 +10,5 @@ export default {
     </footer>
 </template>
  
- 
-
- 
 <style scoped>
 </style>

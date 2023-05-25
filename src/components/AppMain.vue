@@ -10,8 +10,5 @@ export default {
     </main>
 </template>
  
- 
-
- 
 <style scoped>
 </style>

@@ -9,6 +9,15 @@ export default {
     AppHeader,
     AppMain,
     AppFooter
+  },
+  data() {
+    return {
+      apiBaseUrl: 'http://127.0.0.1:8000/api',
+      apiUrls: {
+        projects: '/projects'
+      },
+      projects: []
+    }
   }
 }
 </script>
