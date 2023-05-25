@@ -13,7 +13,7 @@ export default {
 <template>
     <main>
         <div class="container">
-            <div class="row gy-4">
+            <div class="row gy-4 pt-5">
                 <div v-for="project in projects" class="col-3">
                     <div class="card h-100 p-1">
                         <img v-if="project.project_image" :src="project.project_image" class="card-img-top rounded-5 mb-2" :alt="project.project_name + '-img'">
@@ -33,4 +33,8 @@ export default {
     </main>
 </template>
  
-<style scoped></style>
+<style scoped>
+main {
+    background-color: #AFD3E2;
+}
+</style>
