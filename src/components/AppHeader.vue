@@ -12,6 +12,11 @@ export default {
           <img src="logo.png" alt="logo" class="d-inline-block align-text-top me-2 logo">
           Personal portfolio
         </a>
+        <ul class="list-unstyled gap-2 d-flex mb-0">
+          <li>
+            <router-link :to="{ name: 'home' }" class="nav-link">Home</router-link>
+          </li>
+        </ul>
       </div>
     </nav>
   </header>
