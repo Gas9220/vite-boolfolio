@@ -9,7 +9,7 @@ export default {
     <nav class="navbar">
       <div class="container-fluid">
         <a class="navbar-brand align-items-center d-flex fw-bold" href="#">
-          <img src="logo.png" alt="logo" class="d-inline-block align-text-top me-2 logo">
+          <img src="../../public/logo.png" alt="logo" class="d-inline-block align-text-top me-2 logo">
           Personal portfolio
         </a>
         <ul class="list-unstyled gap-2 d-flex mb-0">
