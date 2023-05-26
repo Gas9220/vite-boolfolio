@@ -50,9 +50,5 @@ export default {
 <style scoped lang="scss">
 main {
     background-color: #AFD3E2;
-
-    .tag {
-        background-color: #146C94;
-    }
 }
 </style>
