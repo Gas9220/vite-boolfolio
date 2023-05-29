@@ -9,6 +9,7 @@ export default {
     },
     data() {
         return {
+            results: Object,
             elements_per_page: 3,
             apiBaseUrl: 'http://127.0.0.1:8000/api',
             apiUrls: {
@@ -21,9 +22,24 @@ export default {
         getProjects() {
             axios.get(this.apiBaseUrl + this.apiUrls.projects + "/" + this.elements_per_page)
                 .then((response) => {
-                    //console.log(response.data);
+                    this.results = response.data.result;
                     this.projects = response.data.result.data;
-                    console.log(this.projects);
+                    console.log(this.results);
+                    // console.log(this.projects);
+
+                })
+                .catch((error) => {
+                    console.log(error);
+                })
+        },
+        async changePage(page = 1) {
+            await axios.get(`http://127.0.0.1:8000/api/projects/${this.elements_per_page}?page=${page}`)
+                .then((response) => {
+                    this.results = response.data.result;
+                    this.projects = response.data.result.data;
+                    console.log(this.results);
+                    // console.log(this.projects);
+
                 })
                 .catch((error) => {
                     console.log(error);
@@ -32,6 +48,14 @@ export default {
     },
     created() {
         this.getProjects();
+    },
+    computed: {
+        linkLists() {
+            const links = this.results.links ?? [];
+            links.pop();
+            links.shift()
+            return links;
+        }
     }
 }
 </script>
@@ -43,6 +67,15 @@ export default {
                 <div v-for="project in projects" class="col-3">
                     <ProjectCard :project="project"></ProjectCard>
                 </div>
+            </div>
+            <div class="text-center pb-3">
+                <ul class="list-unstyled d-flex justify-content-center mb-0">
+                    <li v-for="page in linkLists" class="me-2">
+                        <button v-if="page.url" @click.prevent="changePage(page.label)" class="btn rounded-circle" :class="page.label == results.current_page ? 'bg-primary' : 'bg-secondary'">
+                            <i :class="'bi bi-' + page.label + '-circle-fill'" class="text-white"></i>
+                        </button>
+                    </li>
+                </ul>
             </div>
         </div>
     </main>
