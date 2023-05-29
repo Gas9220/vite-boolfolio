@@ -10,7 +10,7 @@ export default {
     data() {
         return {
             results: Object,
-            elements_per_page: 3,
+            elementPerPage: 3,
             apiBaseUrl: 'http://127.0.0.1:8000/api',
             apiUrls: {
                 projects: '/projects'
@@ -19,8 +19,8 @@ export default {
         }
     },
     methods: {
-        getProjects() {
-            axios.get(this.apiBaseUrl + this.apiUrls.projects + "/" + this.elements_per_page)
+        getProjects(elements = 3) {
+            axios.get(this.apiBaseUrl + this.apiUrls.projects + "/" + elements)
                 .then((response) => {
                     this.results = response.data.result;
                     this.projects = response.data.result.data;
@@ -33,7 +33,7 @@ export default {
                 })
         },
         async changePage(page = 1) {
-            await axios.get(`http://127.0.0.1:8000/api/projects/${this.elements_per_page}?page=${page}`)
+            await axios.get(`http://127.0.0.1:8000/api/projects/${this.elementPerPage}?page=${page}`)
                 .then((response) => {
                     this.results = response.data.result;
                     this.projects = response.data.result.data;
@@ -63,6 +63,13 @@ export default {
 <template>
     <main>
         <div class="container">
+            <label for="page-elements" class="me-2">Elements per page</label>
+            <select class="text-center" name="page-elements" id="page-elements" @change="getProjects(elementPerPage)" v-model="elementPerPage">
+                <option value="3" >3</option>
+                <option value="10">10</option>
+                <option value="15">15</option>
+                <option value="30">30</option>
+            </select>
             <div class="row gy-4 pt-4 pb-4">
                 <div v-for="project in projects" class="col-3">
                     <ProjectCard :project="project"></ProjectCard>
