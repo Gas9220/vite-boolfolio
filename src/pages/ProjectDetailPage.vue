@@ -15,10 +15,10 @@ export default {
     },
     methods: {
         getProject() {
-            axios.get(this.apiBaseUrl + this.$route.params.id)
+            axios.get(this.apiBaseUrl + this.$route.params.id + '/show')
                 .then((response) => {
                     console.log(response);
-                    this.project = response.data.results;
+                    this.project = response.data.result;
                 })
                 .catch((error) => {
                     console.log(error);

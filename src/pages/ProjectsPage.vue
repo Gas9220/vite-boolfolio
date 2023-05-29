@@ -24,7 +24,7 @@ export default {
                 .then((response) => {
                     this.results = response.data.result;
                     this.projects = response.data.result.data;
-                    console.log(this.results);
+                    //console.log(this.results);
                     // console.log(this.projects);
 
                 })
@@ -37,7 +37,7 @@ export default {
                 .then((response) => {
                     this.results = response.data.result;
                     this.projects = response.data.result.data;
-                    console.log(this.results);
+                    //console.log(this.results);
                     // console.log(this.projects);
 
                 })
