@@ -37,8 +37,19 @@ export default {
 
 <template>
     <section v-if="project">
-        <div class="container">
-            <h1 class="mt-5 mb-3">{{ project.project_name }}</h1>
+        <div class="container mb-3">
+            <h1 class="mt-5 mb-3"><span class="badge bg-warning">{{ project.type.name }}</span> {{ project.project_name }} </h1>
+            <hr>
+            <h4>Summary</h4>
+            <span>Revenues: {{ project.revenues }}€</span>
+            <p>{{ project.project_summary }}</p>
+            <hr>
+            <h4>Dates</h4>
+            <span class="d-block">Start date: {{ project.start_date }}</span>
+            <span>End date: {{ project.end_date }}</span>
+            <hr>
+            <h4>Used technologies</h4>
+            <span class="me-2 badge bg-warning" v-for="technology in project.technologies">{{ technology.name }}</span>
         </div>
     </section>
     <section v-if="error.status">
