@@ -9,6 +9,7 @@ export default {
     },
     data() {
         return {
+            elements_per_page: 3,
             apiBaseUrl: 'http://127.0.0.1:8000/api',
             apiUrls: {
                 projects: '/projects'
@@ -18,10 +19,10 @@ export default {
     },
     methods: {
         getProjects() {
-            axios.get(this.apiBaseUrl + this.apiUrls.projects)
+            axios.get(this.apiBaseUrl + this.apiUrls.projects + "/" + this.elements_per_page)
                 .then((response) => {
                     //console.log(response.data);
-                    this.projects = response.data.result;
+                    this.projects = response.data.result.data;
                     console.log(this.projects);
                 })
                 .catch((error) => {
