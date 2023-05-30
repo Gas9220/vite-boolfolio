@@ -46,7 +46,7 @@ export default {
                             </button>
                         </h2>
                         <div id="collapseOne" class="accordion-collapse collapse show custom-bg rounded" data-bs-parent="#accordionExample">
-                            <div class="accordion-body">
+                            <div class="accordion-body text-white">
                                 <span class="d-block">Slug: {{ type.slug }}</span>
                                 <span class="d-block">ID: {{ type.id }}</span>
                                 <span class="d-block">Created: {{ type.created_at }}</span>
