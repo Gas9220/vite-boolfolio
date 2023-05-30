@@ -16,7 +16,7 @@ export default {
     },
     methods: {
         getProject() {
-            axios.get(this.store.projectDetailUrl + this.$route.params.id)
+            axios.get(`${this.store.projectDetailUrl}${this.$route.params.id}`)
                 .then((response) => {
                     console.log(response);
                     this.project = response.data.result;
