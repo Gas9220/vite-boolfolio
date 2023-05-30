@@ -20,6 +20,9 @@ export default {
             <router-link :to="{ name: 'types' }" class="nav-link">Types</router-link>
           </li>
           <li>
+            <router-link :to="{ name: 'technologies' }" class="nav-link">Technologies</router-link>
+          </li>
+          <li>
             <router-link :to="{ name: 'projects' }" class="nav-link">Projects</router-link>
           </li>
         </ul>
