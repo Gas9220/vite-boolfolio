@@ -1,6 +1,7 @@
 <script>
 import axios from 'axios';
 import ProjectCard from '../components/ProjectCard.vue';
+import store from '../store';
 
 export default {
     name: 'ProjectsPage',
@@ -9,18 +10,15 @@ export default {
     },
     data() {
         return {
+            store,
             results: Object,
             elementPerPage: 3,
-            apiBaseUrl: 'http://127.0.0.1:8000/api',
-            apiUrls: {
-                projects: '/projects'
-            },
             projects: []
         }
     },
     methods: {
         getProjects(elements = 3) {
-            axios.get(this.apiBaseUrl + this.apiUrls.projects + "/paginate/" + elements)
+            axios.get(this.store.urlProjectsList + elements)
                 .then((response) => {
                     this.results = response.data.result;
                     this.projects = response.data.result.data;
@@ -33,7 +31,7 @@ export default {
                 })
         },
         async changePage(page = 1) {
-            await axios.get(`http://127.0.0.1:8000/api/projects/paginate/${this.elementPerPage}?page=${page}`)
+            await axios.get(`${this.store.urlProjectsList}${this.elementPerPage}?page=${page}`)
                 .then((response) => {
                     this.results = response.data.result;
                     this.projects = response.data.result.data;

@@ -1,11 +1,12 @@
 <script>
 import axios from 'axios';
+import store from '../store';
 
 export default {
     name: "ProjectDetailPage",
     data() {
         return {
-            apiBaseUrl: 'http://127.0.0.1:8000/api/projects/',
+            store,
             project: null,
             error: {
                 status: false,
@@ -15,7 +16,7 @@ export default {
     },
     methods: {
         getProject() {
-            axios.get(this.apiBaseUrl + this.$route.params.id)
+            axios.get(this.store.projectDetailUrl + this.$route.params.id)
                 .then((response) => {
                     console.log(response);
                     this.project = response.data.result;
