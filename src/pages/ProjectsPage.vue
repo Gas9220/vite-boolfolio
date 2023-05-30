@@ -20,7 +20,7 @@ export default {
     },
     methods: {
         getProjects(elements = 3) {
-            axios.get(this.apiBaseUrl + this.apiUrls.projects + "/" + elements)
+            axios.get(this.apiBaseUrl + this.apiUrls.projects + "/paginate/" + elements)
                 .then((response) => {
                     this.results = response.data.result;
                     this.projects = response.data.result.data;
@@ -33,7 +33,7 @@ export default {
                 })
         },
         async changePage(page = 1) {
-            await axios.get(`http://127.0.0.1:8000/api/projects/${this.elementPerPage}?page=${page}`)
+            await axios.get(`http://127.0.0.1:8000/api/projects/paginate/${this.elementPerPage}?page=${page}`)
                 .then((response) => {
                     this.results = response.data.result;
                     this.projects = response.data.result.data;
@@ -64,7 +64,7 @@ export default {
     <main>
         <div class="container">
             <label for="page-elements" class="me-2">Elements per page</label>
-            <select class="text-center" name="page-elements" id="page-elements" @change="getProjects(elementPerPage)" v-model="elementPerPage">
+            <select class="mt-2" name="page-elements" id="page-elements" @change="getProjects(elementPerPage)" v-model="elementPerPage">
                 <option value="3" >3</option>
                 <option value="10">10</option>
                 <option value="15">15</option>

@@ -15,7 +15,7 @@ export default {
     },
     methods: {
         getProject() {
-            axios.get(this.apiBaseUrl + this.$route.params.id + '/show')
+            axios.get(this.apiBaseUrl + this.$route.params.id)
                 .then((response) => {
                     console.log(response);
                     this.project = response.data.result;
