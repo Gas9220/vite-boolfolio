@@ -26,7 +26,7 @@ export default {
                     <span class="badge tag me-2">{{ technology.name }}</span>
                 </div>
             </div>
-            <router-link :to="{ name: 'projectDetail', params: { id: project.id } }" class="btn btn-primary mt-auto">
+            <router-link :to="{ name: 'projectDetail', params: { id: project.id } }" class="btn mt-auto detail-link text-white">
                 Project detail
             </router-link>
         </div>
@@ -34,7 +34,11 @@ export default {
 </template>
 
 <style scoped>
-    .tag {
-        background-color: #146C94;
-    }
+.tag {
+    background-color: #146C94;
+}
+
+.detail-link {
+    background-color: #146C94;
+}
 </style>
