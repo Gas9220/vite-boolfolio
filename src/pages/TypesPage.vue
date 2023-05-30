@@ -29,7 +29,7 @@ export default {
     },
     created() {
         this.getTypes();
-    },
+    }
 }
 </script>
 
@@ -68,9 +68,5 @@ export default {
 <style scoped lang="scss">
 .custom-bg {
     background-color: #146C94;
-}
-
-.accordion-active-color {
-  background: blue
 }
 </style>
