@@ -3,7 +3,6 @@ import axios from 'axios';
 import store from '../store';
 
 export default {
-
     name: 'ContactsPage',
     data() {
         return {
@@ -53,7 +52,7 @@ export default {
 <template>
     <main>
         <h1 class="text-center pt-2">Contact me</h1>
-        <h3 class="text-center text-success">{{ resultMessage }}</h3>
+        <h3 class="text-center text-success" :class="{'d-none': resultMessage === ''}">{{ resultMessage }}</h3>
         <div class="container-fluid justify-content-center d-flex">
             <form @submit.prevent="sendMessage" class="w-50 pb-3 pt-3">
                 <div class="mb-3">
